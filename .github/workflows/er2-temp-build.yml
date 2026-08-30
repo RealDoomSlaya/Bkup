@@ -12,7 +12,9 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Generate v1.5 source
-        run: python .chatgpt-er2/make_v15.py
+        run: |
+          python .chatgpt-er2/make_v15.py
+          sed -i 's/_itemsDatabaseType/_itemsDbType/g; s/_attachmentScopeType/_scopeType/g; s/_attachmentBipodType/_bipodType/g; s/_attachmentBayonetType/_bayonetType/g' .chatgpt-er2/ER2OfficialContentReveal_v1_5.cs
       - name: Restore
         run: dotnet restore .chatgpt-er2/ER2OfficialContentReveal.csproj --configfile .chatgpt-er2/NuGet.Config --nologo
       - name: Build plugin
