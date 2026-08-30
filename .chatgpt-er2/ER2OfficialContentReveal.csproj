@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>ER2OfficialContentReveal</AssemblyName>
+    <RootNamespace>ER2OfficialContentReveal</RootNamespace>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.785" />
+    <PackageReference Include="HarmonyX" Version="2.10.2" />
+  </ItemGroup>
+</Project>

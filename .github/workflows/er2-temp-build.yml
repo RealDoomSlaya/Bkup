@@ -1,0 +1,23 @@
+name: ER2 temporary build
+on:
+  push:
+    branches:
+      - chatgpt-er2-build
+jobs:
+  build-er2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore
+        run: dotnet restore .chatgpt-er2/ER2OfficialContentReveal.csproj --configfile .chatgpt-er2/NuGet.Config --nologo
+      - name: Build plugin
+        run: dotnet build .chatgpt-er2/ER2OfficialContentReveal.csproj -c Release --no-restore --nologo
+      - name: Upload DLL
+        uses: actions/upload-artifact@v4
+        with:
+          name: ER2OfficialContentReveal-v1.2.1
+          path: .chatgpt-er2/bin/Release/net6.0/ER2OfficialContentReveal.dll
+          if-no-files-found: error
