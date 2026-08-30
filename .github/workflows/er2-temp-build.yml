@@ -11,10 +11,8 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Generate v1.5 source
-        run: |
-          python .chatgpt-er2/make_v15.py
-          sed -i 's/_itemsDatabaseType/_itemsDbType/g; s/_attachmentScopeType/_scopeType/g; s/_attachmentBipodType/_bipodType/g; s/_attachmentBayonetType/_bayonetType/g' .chatgpt-er2/ER2OfficialContentReveal_v1_5.cs
+      - name: Generate v1.5.1 source
+        run: python .chatgpt-er2/make_v151.py
       - name: Restore
         run: dotnet restore .chatgpt-er2/ER2OfficialContentReveal.csproj --configfile .chatgpt-er2/NuGet.Config --nologo
       - name: Build plugin
@@ -22,6 +20,6 @@ jobs:
       - name: Upload DLL
         uses: actions/upload-artifact@v4
         with:
-          name: ER2OfficialContentReveal-v1.5.0
+          name: ER2OfficialContentReveal-v1.5.1
           path: .chatgpt-er2/bin/Release/net6.0/ER2OfficialContentReveal.dll
           if-no-files-found: error
